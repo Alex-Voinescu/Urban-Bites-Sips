@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.Service.ProductService;
+import com.urbanBites.Service.ProductService;
 import com.urbanBites.urbanBites.Product;
+import com.urbanBites.urbanBites.ProductRepository;
 
 import java.util.List;
 
@@ -15,6 +16,9 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Autowired
+    private ProductRepository productRepository;
 
     @GetMapping
     public List<Product> getAllProducts() {
