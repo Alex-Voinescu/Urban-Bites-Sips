@@ -5,8 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.Service.OrderService;
+import com.urbanBites.Service.OrderService;
 import com.urbanBites.urbanBites.Order;
+import com.urbanBites.urbanBites.OrderRepository;
 
 import java.util.List;
 
@@ -16,6 +17,9 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+    
+    @Autowired
+    private OrderRepository orderRepository;
 
     @GetMapping
     public List<Order> getAllOrders() {

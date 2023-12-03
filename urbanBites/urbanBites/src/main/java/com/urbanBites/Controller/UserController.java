@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.Service.UserService;
+import com.urbanBites.Service.UserService;
 import com.urbanBites.urbanBites.User;
+import com.urbanBites.urbanBites.UserRepository;
 
 import java.util.List;
 
@@ -15,7 +16,10 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
+    
+    @Autowired
+    private UserRepository userRepository;
+    
     @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();

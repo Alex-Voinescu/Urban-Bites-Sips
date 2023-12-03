@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.Service.ReservationService;
+import com.urbanBites.Service.ReservationService;
 import com.urbanBites.urbanBites.Reservation;
+import com.urbanBites.urbanBites.ReservationRepository;
 
 import java.util.List;
 
@@ -16,6 +17,9 @@ public class ReservationController {
     @Autowired
     private ReservationService reservationService;
 
+    @Autowired
+    private ReservationRepository reservationRepository;
+    
     @GetMapping
     public List<Reservation> getAllReservations() {
         return reservationService.getAllReservations();
