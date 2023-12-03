@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.urbanBites.urbanBites.Reservation;
-import com.urbanBites.urbanBites.ReservationRepository;
+import com.urbanBites.Model.Reservation;
+import com.urbanBites.Repository.ReservationRepository;
 
 import java.util.List;
 import java.util.Optional;

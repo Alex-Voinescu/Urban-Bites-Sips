@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.urbanBites.urbanBites.Product;
-import com.urbanBites.urbanBites.ProductRepository;
+import com.urbanBites.Model.Product;
+import com.urbanBites.Repository.ProductRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,8 +20,8 @@ public class ProductService {
         return (List<Product>) productRepository.findAll();
     }
 
-    public ResponseEntity<Product> getProductById(Long productId) {
-        Optional<Product> productOptional = productRepository.findById(productId);
+    public ResponseEntity<Product> getProductById(long id) {
+        Optional<Product> productOptional = productRepository.findById(id);
         return productOptional.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
