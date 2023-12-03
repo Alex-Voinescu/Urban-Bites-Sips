@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.urbanBites.urbanBites.Order;
-import com.urbanBites.urbanBites.OrderRepository;
+import com.urbanBites.Model.Order;
+import com.urbanBites.Repository.OrderRepository;
 
 import java.util.List;
 import java.util.Optional;

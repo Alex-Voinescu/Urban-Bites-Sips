@@ -4,9 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.urbanBites.Model.User;
+import com.urbanBites.Repository.UserRepository;
 import com.urbanBites.Service.UserService;
-import com.urbanBites.urbanBites.User;
-import com.urbanBites.urbanBites.UserRepository;
 
 import java.util.List;
 

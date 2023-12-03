@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.urbanBites.Model.Order;
+import com.urbanBites.Repository.OrderRepository;
 import com.urbanBites.Service.OrderService;
-import com.urbanBites.urbanBites.Order;
-import com.urbanBites.urbanBites.OrderRepository;
 
 import java.util.List;
 
