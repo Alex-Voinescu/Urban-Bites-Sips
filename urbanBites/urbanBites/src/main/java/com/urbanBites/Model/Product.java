@@ -15,13 +15,15 @@ public class Product {
     private Integer id;
     private String name;
     private String description;
+    private String quantity;
     private double price;
  
     public Product() {}
 
-    public Product(String name, String description, double price) {
+    public Product(String name, String description, String quantity, double price) {
         this.name = name;
         this.description = description;
+        this.quantity=quantity;
         this.price = price;
     }
 
@@ -49,6 +51,14 @@ public class Product {
 		this.description = description;
 	}
 
+	public String getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(String quantity) {
+		this.quantity = quantity;
+	}
+
 	public double getPrice() {
 		return price;
 	}
@@ -59,7 +69,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price + "]";
+		return "Product [id=" + id + ", name=" + name + ", description=" + description + ", quantity=" + quantity + ", price=" + price + "]";
 	}
     
 }

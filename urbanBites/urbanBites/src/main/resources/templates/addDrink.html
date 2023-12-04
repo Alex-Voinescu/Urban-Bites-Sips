@@ -2,16 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Product</title>
+    <title>Add Drink</title>
 </head>
 <body>
-    <h2>Add Product</h2>
-    <form action="/products/addProduct" method="post" th:object="${product}">
+    <h2>Add Drink</h2>
+    <form action="/products/addDrink" method="post" th:object="${drinkProduct}">
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" th:field="*{name}" required/>
         <br/>
         <label for="description">Description:</label>
         <input type="text" id="description" name="description" th:field="*{description}" required/>
+        <br/>
+        <label for="quantity">Quantity:</label>
+        <input type="text" id="quantity" name="quantity" th:field="*{quantity}" required/>
         <br/>
         <label for="price">Price:</label>
         <input type="number" id="price" name="price" th:field="*{price}" required/>
@@ -21,6 +24,6 @@
 
     <br/>
 
-    <a href="/products">Back to Product List</a>
+    <a href="/products">Back to Menu</a>
 </body>
 </html>

@@ -3,15 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <title>Products</title>
+    <style>
+        body {
+            height: 110vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            color:white;
+            
+        }
+
+        header {
+            background-color: #333;
+            padding: 15px;
+            text-align: center;
+            
+        }
+
+        nav {
+			
+            
+            justify-content: center;
+            padding-bottom:20px;
+            display:flex;
+        }
+
+        nav a {
+			
+			justify-content:center;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 10px 10px;
+            padding-bottom:10px;
+            border-radius: 5px;
+            background-color: #555;
+        }
+        nav a:hover{
+			color:lightgray;
+		}
+        img{
+			width:110%;
+			height:110%;
+		
+		}
+		.container{
+			flex: 1;
+            position: relative;
+			text-align:center;
+			display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+	
+		}
+		.tabel1{
+			position: absolute;
+            top: 30%;
+            left: 20%;
+            transform: translate(-50%, -90%);
+            padding: 20px;
+            border-radius: 10px;
+			
+		}
+		.tabel2{
+			position: absolute;
+            top: 30%;
+            left: 80%;
+            transform: translate(-50%, -90%);
+            padding: 20px;
+            border-radius: 10px;
+			
+		}
+		.nav{
+			position: absolute;
+		}
+    </style>
 </head>
 <body>
-    <h2>Product List</h2>
+	<div class="container">
+		<img th:src="@{images/restaurant.jpg}" />
+	<div class="tabel1">
+    <h2>Eats</h2>
     <table border="1">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Quantity</th>
                 <th>Price</th>
             </tr>
         </thead>
@@ -20,13 +102,49 @@
                 <td th:text="${product.id}"></td>
                 <td th:text="${product.name}"></td>
                 <td th:text="${product.description}"></td>
+                <td th:text="${product.quantity}"></td>
                 <td th:text="${product.price}"></td>
             </tr>
         </tbody>
-    </table>
+    </table>	
+    
 
-    <br/>
+ 
+    </div>
+    
+    
+    <div class="tabel2">
+    <h2>Sips</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="drink : ${drinks}">
+                <td th:text="${drink.id}"></td>
+                <td th:text="${drink.name}"></td>
+                <td th:text="${drink.description}"></td>
+                <td th:text="${drink.quantity}"></td>
+                <td th:text="${drink.price}"></td>
+            </tr>
+        </tbody>
+    </table>	
 
-    <a href="/products/addProduct">Add Product</a>
+    </div>
+    <div class="nav">
+    	<br/>
+		<nav>
+    		<a th:href="@{/}" th:text="${'Home'}">Home</a>
+  			<a href="/products/addFood">Add Food</a>
+  			<a href="/products/addDrink">Add Drink</a>
+		</nav>
+	</div>
+    </div>
 </body>
 </html>
