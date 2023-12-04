@@ -3,27 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Food</title>
+     <style>
+        body {
+            height: 110vh;
+            margin: 0;
+            color: white;
+            font-family: Arial, sans-serif;
+            
+        }
+
+        header {
+            padding: 15px;
+            text-align: center;
+            
+        }
+        .container{
+			flex: 1;
+            position: relative;
+			text-align:center;
+			display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            }
+        nav {
+			
+       
+            justify-content: center;
+            padding-bottom:20px;
+        }
+
+         input,a,button{
+			
+			justify-content:center;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 10px 10px;
+            padding-bottom:10px;
+            border-radius: 5px;
+            background-color: #555;
+        }
+        button:hover{
+			color:lightgray;
+		}
+        img{
+			width:110%;
+			height:auto;
+			
+		}
+		.form{
+		position: absolute;
+      	top:5%;
+          
+            }
+    </style>
 </head>
 <body>
+	<div class="container">
+	<img th:src="@{./../images/restaurant.jpg}" />
+	<div class="form">
     <h2>Add Food</h2>
     <form action="/products/addFood" method="post" th:object="${product}">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" th:field="*{name}" required/>
-        <br/>
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" th:field="*{description}" required/>
-        <br/>
-        <label for="quantity">Quantity:</label>
-        <input type="text" id="quantity" name="quantity" th:field="*{quantity}" required/>
-        <br/>
-        <label for="price">Price:</label>
-        <input type="number" id="price" name="price" th:field="*{price}" required/>
-        <br/>
+       <table>
+			<tr>
+        		<td>Name:</td>
+        		<td><input type="text" id="name" name="name" th:field="*{name}" required/></td>
+        	</tr>
+        	
+        	<tr>
+        		<td>Description:</td>
+        		<td><input type="text" id="description" name="description" th:field="*{description}" required/></td>
+        	</tr>
+        	
+        	<tr>
+        		<td>Quantity:</td>
+        		<td><input type="text" id="quantity" name="quantity" th:field="*{quantity}" required/></td>
+        	</tr>
+        	
+        	<tr>
+        		<td>Price:</td>
+        		<td><input type="number" id="price" name="price" th:field="*{price}" required/></td>
+        	</tr>
+        </table>
         <button type="submit">Save</button>
     </form>
 
     <br/>
 
     <a href="/products">Back to Menu</a>
+    </div>
+    </div>
 </body>
 </html>
