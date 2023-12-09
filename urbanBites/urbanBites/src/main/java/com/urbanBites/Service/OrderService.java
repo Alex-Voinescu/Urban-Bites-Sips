@@ -20,7 +20,7 @@ public class OrderService {
         return (List<Order>) orderRepository.findAll();
     }
 
-    public ResponseEntity<Order> getOrderById(Long orderId) {
+    public ResponseEntity<Order> getOrderById(long orderId) {
         Optional<Order> orderOptional = orderRepository.findById(orderId);
         return orderOptional.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }

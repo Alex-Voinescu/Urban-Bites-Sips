@@ -2,6 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Drink</title>
      <style>
         body {
@@ -66,7 +67,8 @@
 	<div class="form">
     <h2>Add Drink</h2>
     <form action="/products/addDrink" method="post" th:object="${drinkProduct}">
-		<table>			<tr>
+		<table>
+			<tr>
         		<td>Name:</td>
         		<td><input type="text" id="name" name="name" th:field="*{name}" required/></td>
         	</tr>

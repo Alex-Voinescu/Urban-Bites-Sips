@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Spring Boot App</title>
+    <title>Place Order</title>
     <style>
-        body {
+    body {
             height: 110vh;
             margin: 0;
             color: white;
@@ -13,6 +13,11 @@
             
         }
 
+        header {
+            padding: 15px;
+            text-align: center;
+            
+        }
         .container{
 			flex: 1;
             position: relative;
@@ -29,7 +34,7 @@
             padding-bottom:20px;
         }
 
-        nav a {
+         input,a,button{
 			
 			justify-content:center;
             color: white;
@@ -40,7 +45,7 @@
             border-radius: 5px;
             background-color: #555;
         }
-        nav a:hover{
+        button:hover{
 			color:lightgray;
 		}
         img{
@@ -48,7 +53,7 @@
 			height:auto;
 			
 		}
-		.tabel{
+		.form{
 		position: absolute;
       	top:5%;
           
@@ -57,21 +62,27 @@
 </head>
 <body>
 <div class="container">
-	<img th:src="@{images/restaurant.jpg}" />
-	<div class="tabel">
-    <h1>Welcome to Urban Bites&Sips</h1>
-	<br/>
-	<br/>
-	<br/>
-	
-	<nav>
-    	<a th:href="@{/}" th:text="${'Home'}">Home</a>
-    	<a th:href="@{/products}" th:text="${'Product'}">Menu</a>
-    	<a th:href="@{/orders}" th:text="${'Order'}">Orders</a>
-    
-	</nav>
+	<img th:src="@{./../images/restaurant.jpg}" />
+	<div class="form">
+<h2>Place Order</h2>
 
-</div>
-</div>
+<form th:action="@{/orders/place}" th:object="${order}" method="post">
+    <label for="products">Produse:</label>
+    <select id="products" name="products"  multiple="multiple">
+        <option th:each="product : ${products}" th:value="${product.id}" th:text="${product.name}"></option>
+    </select>
+    <br/>
+	<br/>
+	<label for="totalAmount">Total:</label>
+    <input type="text" id="totalAmount" name="totalAmount" th:field="*{totalAmount}" readonly="readonly" />
+     <br/>
+	<br/>
+    <button type="submit">Place Order</button>
+</form>
+<br/>
+	<br/>
+	<a href="/orders">Back to Orders</a>
+	 </div>
+    </div>
 </body>
 </html>

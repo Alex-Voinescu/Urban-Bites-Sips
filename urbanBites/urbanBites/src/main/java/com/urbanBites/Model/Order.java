@@ -1,5 +1,7 @@
 package com.urbanBites.Model;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -14,27 +16,49 @@ import jakarta.persistence.Table;
 public class Order {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
+	private LocalDate date;
+	private double totalAmount;
 	
 	 @OneToMany
     private List<Product> products;
 	 
-    private double totalAmount;
-    private String status;
+    
+ 
   
     public Order() {}
+    
 
-    public Order(List<Product> products) {
-        this.products = products;
-        this.products = products;
-        calculateTotalAmount();
-    }
-   
-    public Long getId() {
+    public Order(Integer id, LocalDate date, double totalAmount, List<Product> products) {
+		super();
+		this.id = id;
+		this.date = date;
+		this.totalAmount =totalAmount;
+		this.products = products;
+		if (this.products == null) {
+            this.products = new ArrayList<>();
+        }
+
+	}
+
+    public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+
+
+
+	public LocalDate getDate() {
+		return date;
+	}
+
+
+	public void setDate(LocalDate date) {
+		this.date = date;
+	}
+
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -54,24 +78,22 @@ public class Order {
 		this.totalAmount = totalAmount;
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
 	
+
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", products=" + products + ", totalAmount=" + totalAmount + ", status=" + status
-				+ "]";
+		return "Order [id=" + id + ", date=" + date + ", totalAmount="
+				+ totalAmount + ", products=" + products + "]";
 	}
 
-	private void calculateTotalAmount() {
-        this.totalAmount = 0.0;
-        for (Product product : products) {
-            this.totalAmount += product.getPrice();
+
+	public void calculateTotalAmount() {
+	    if (this.products != null) {
+            this.totalAmount = this.products.stream()
+                    .mapToDouble(Product::getPrice)
+                    .sum();
+        } else {
+            this.totalAmount = 0.0;
         }
-    }
+	    }
 }
