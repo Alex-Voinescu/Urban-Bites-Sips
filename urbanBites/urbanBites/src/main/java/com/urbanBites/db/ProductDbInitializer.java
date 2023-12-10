@@ -16,7 +16,7 @@ public class ProductDbInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Product product = new Product("Produs 1","Descriere produs 1", "250g", 25);
+        Product product = new Product("Produs 3","Descriere produs 3", "350g", 25);
         
 
         productRepository.save(product);

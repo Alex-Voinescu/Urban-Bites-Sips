@@ -25,7 +25,7 @@ public class ReservationService {
         return reservationOptional.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    public ResponseEntity<Reservation> makeReservation(Reservation reservation) {
+    public ResponseEntity<Reservation> saveReservation(Reservation reservation) {
     	
         Reservation savedReservation = reservationRepository.save(reservation);
         return ResponseEntity.ok(savedReservation);

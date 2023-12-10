@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Form</title>
+     <style>
+    body {
+            height: 110vh;
+            margin: 0;
+            color: white;
+            font-family: Arial, sans-serif;
+            
+        }
+
+        header {
+            padding: 15px;
+            text-align: center;
+            
+        }
+        .container{
+			flex: 1;
+            position: relative;
+			text-align:center;
+			display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            }
+        nav {
+			
+       
+            justify-content: center;
+            padding-bottom:20px;
+        }
+
+         input,a,button,option,select{
+			
+			justify-content:center;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 10px 10px;
+            padding-bottom:10px;
+            border-radius: 5px;
+            background-color: #555;
+        }
+        button:hover{
+			color:lightgray;
+		}
+        img{
+			width:110%;
+			height:auto;
+			
+		}
+		.form{
+		position: absolute;
+      	top:5%;
+          
+            }
+    </style>
+</head>
+<body>
+	<div class="container">
+	<img th:src="@{./../images/restaurant.jpg}" />
+	<div class="form">
+    <h2>Reservation Form</h2>
+    <form action="#" th:action="@{/reservations/save}" th:object="${reservation}" method="post">
+		
+      <label for="tableNumber">Table Number:</label>
+        <select id="tableNumber" name="tableNumber" th:field="*{tableNumber}" required>
+            <option value="1">Table 1</option>
+            <option value="2">Table 2</option>
+            <option value="3">Table 3</option>
+            <option value="4">Table 4</option>
+            <option value="5">Table 5</option>
+            <option value="6">Table 6</option>
+            <option value="7">Table 7</option>
+            <option value="8">Table 8</option>
+            <option value="9">Table 9</option>
+            <option value="10">Table 10</option>
+        </select>
+        <br/>
+		<br/>
+         <label for="numberOfPeople">Number of People:</label>
+        <select id="numberOfPeople" name="numberOfPeople" th:field="*{numberOfPeople}" required>
+            <option value="1">1 person</option>
+            <option value="2">2 people</option>
+            <option value="3">3 people</option>
+            <option value="4">4 people</option>
+            <option value="5">5 people</option>
+            <option value="6">6 people</option>
+            <option value="7">7 people</option>
+            <option value="8">8 people</option>
+            <option value="9">9 people</option>
+            <option value="10">10 people</option>
+            <option value="11">11 people</option>
+            <option value="12">12 people</option>
+        </select>
+        <br/>
+		<br/>
+        <label for="reservationDate">Reservation Date:</label>
+        <input type="datetime-local" id="reservationDate" name="reservationDate" th:field="*{reservationDate}" required>
+		<br/>
+		<br/>
+        <button type="submit">Save Reservation</button>
+        <br/>
+		<br/>
+        <a href="/reservations">Back to Reservations</a>
+    </div>
+    </div>
+    </form>
+</body>
+</html>
