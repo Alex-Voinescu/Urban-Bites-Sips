@@ -2,6 +2,8 @@ package com.urbanBites.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import com.urbanBites.Model.Reservation;
@@ -10,7 +12,7 @@ import com.urbanBites.Service.ReservationService;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/reservations")
 public class ReservationController {
 
@@ -21,8 +23,16 @@ public class ReservationController {
     private ReservationRepository reservationRepository;
     
     @GetMapping
-    public List<Reservation> getAllReservations() {
-        return reservationService.getAllReservations();
+    public String showReservationList(Model model) {
+        List<Reservation> reservations = reservationService.getAllReservations();
+        model.addAttribute("reservations", reservations);
+        return "reservation-list";
+    }
+    @GetMapping("/form")
+    public String showReservationForm(Model model) {
+    	Reservation reservation=new Reservation();
+        model.addAttribute(reservation);
+        return "reservation-form";
     }
 
     @GetMapping("/{reservationId}")
@@ -30,9 +40,10 @@ public class ReservationController {
         return reservationService.getReservationById(reservationId);
     }
 
-    @PostMapping
-    public ResponseEntity<Reservation> makeReservation(@RequestBody Reservation reservation) {
-        return reservationService.makeReservation(reservation);
+    @PostMapping("/save")
+    public String saveReservation(@ModelAttribute Reservation reservation) {
+        reservationService.saveReservation(reservation);
+        return "redirect:/reservations";
     }
 
 }

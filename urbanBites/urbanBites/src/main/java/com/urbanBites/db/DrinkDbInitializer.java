@@ -15,9 +15,12 @@ public class DrinkDbInitializer implements CommandLineRunner {
 
 	    @Override
 	    public void run(String... args) throws Exception {
-	        DrinkProduct drink = new DrinkProduct("Produs 1","Descriere produs 1", "330ml", 25);
-	        
-	        drinkProductRepository.save(drink);
+	        DrinkProduct drink1 = new DrinkProduct("Produs 1","Descriere produs 1", "330ml", 25);
+	        DrinkProduct drink2 = new DrinkProduct("Produs 2","Descriere produs 2", "500ml", 13);
+	        DrinkProduct drink3 = new DrinkProduct("Produs 3","Descriere produs 3", "800ml", 20);
+	        drinkProductRepository.save(drink1);
+	        drinkProductRepository.save(drink2);
+	        drinkProductRepository.save(drink3);
 	    }	
 }
 

@@ -15,15 +15,23 @@ public class Reservation {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 	    
-	    private LocalDateTime reservationDateTime;
+	    private LocalDateTime reservationDate;
 	    private int numberOfPeople;
+	    private Integer tableNumber;
 	 
 	    public Reservation() {}
 
-	    public Reservation(LocalDateTime reservationDateTime, int numberOfPeople) {
-	        this.reservationDateTime = reservationDateTime;
-	        this.numberOfPeople = numberOfPeople;
-	    }
+	    
+
+		public Reservation(Long id, LocalDateTime reservationDate, int numberOfPeople, Integer tableNumber) {
+			super();
+			this.id = id;
+			this.reservationDate = reservationDate;
+			this.numberOfPeople = numberOfPeople;
+			this.tableNumber = tableNumber;
+		}
+
+
 
 		public Long getId() {
 			return id;
@@ -33,12 +41,12 @@ public class Reservation {
 			this.id = id;
 		}
 
-		public LocalDateTime getReservationDateTime() {
-			return reservationDateTime;
+		public LocalDateTime getReservationDate() {
+			return reservationDate;
 		}
 
-		public void setReservationDateTime(LocalDateTime reservationDateTime) {
-			this.reservationDateTime = reservationDateTime;
+		public void setReservationDate(LocalDateTime reservationDateTime) {
+			this.reservationDate = reservationDateTime;
 		}
 
 		public int getNumberOfPeople() {
@@ -48,11 +56,21 @@ public class Reservation {
 		public void setNumberOfPeople(int numberOfPeople) {
 			this.numberOfPeople = numberOfPeople;
 		}
+		
+		public Integer getTableNumber() {
+			return tableNumber;
+		}
+
+		public void setTableNumber(Integer tableNumber) {
+			this.tableNumber = tableNumber;
+		}
 
 		@Override
 		public String toString() {
-			return "Reservation [id=" + id + ", reservationDateTime=" + reservationDateTime + ", numberOfPeople="
-					+ numberOfPeople + "]";
+			return "Reservation [id=" + id + ", reservationDate=" + reservationDate + ", numberOfPeople="
+					+ numberOfPeople + ", tableNumber=" + tableNumber + "]";
 		}
+		
+		
 	    
 }
