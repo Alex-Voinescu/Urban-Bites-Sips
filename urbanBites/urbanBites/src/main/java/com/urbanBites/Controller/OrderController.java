@@ -11,6 +11,7 @@ import com.urbanBites.Model.Order;
 import com.urbanBites.Model.Product;
 import com.urbanBites.Repository.OrderRepository;
 import com.urbanBites.Service.OrderService;
+import com.urbanBites.Service.ProductService;
 
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -23,6 +24,9 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+    
+    @Autowired
+    private ProductService productService;
     
     @Autowired
     private OrderRepository orderRepository;
@@ -39,9 +43,10 @@ public class OrderController {
     public String showOrderForm(Model model) {
     	Order order= new Order();
         model.addAttribute(order);
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
         return "order-form";
     }
-    
     
     @GetMapping("/order-details")
     public String showOrderDetails(Model model) {
@@ -62,8 +67,10 @@ public class OrderController {
 
     
     @PostMapping("/place")
-    public String placeOrder(Order order) {
+    public String placeOrder(@RequestParam("totalAmount") double totalAmount, Order order) {
         order.setDate(LocalDate.now());
+        order.setTotalAmount(totalAmount);
+      
         orderRepository.save(order);
         return "redirect:/orders";
     }

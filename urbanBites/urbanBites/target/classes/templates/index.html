@@ -52,7 +52,19 @@
 		position: absolute;
       	top:5%;
           
-            }
+         }
+         table{
+			 padding-left:20%;
+		 }
+         .contact{
+			position: absolute;
+			left:15%;
+			
+		 }
+		 .location{
+			position: absolute;
+			left:75%;
+		 }
     </style>
 </head>
 <body>
@@ -63,7 +75,27 @@
 	<br/>
 	<br/>
 	<br/>
-	
+	<table>
+        <tr>
+            <th>Day</th>
+            <th>Open Hours</th>
+        </tr>
+        <tr>
+            <td>Monday-Friday</td>
+            <td>12:00 AM - 10:00 PM</td>
+        </tr>
+        <tr>
+            <td>Saturday</td>
+            <td>12:00 AM - 12:00 PM</td>
+        </tr>
+        <tr>
+            <td>Sunday</td>
+            <td>14:00 AM - 8:00 PM</td>
+        </tr>
+    </table>
+    <br/>
+	<br/>
+	<br/>
 	<nav>
     	<a th:href="@{/}" th:text="${'Home'}">Home</a>
     	<a th:href="@{/products}" th:text="${'Product'}">Menu</a>
@@ -71,8 +103,25 @@
     	<a th:href="@{/reservations}" th:text="${'Reservation'}">Reservations</a>
     
 	</nav>
-
+	<br/>
+	<br/>
+	<h2>Thank you for choosing our restaurant!</h2>
 </div>
+<br/>
+<br/>
+
+<div class="contact">
+	<h3>Contact Information</h3>
+    <p>Email: info@example.com</p>
+    <p>Phone: (123) 456-7890</p>
+</div>	
+
+<div class="location">
+	<h3>Location</h3>
+    <p>Address: 123 Main Street, Cityville</p>
+    <p>City: Cityville</p>
+</div>	
+
 </div>
 </body>
 </html>
